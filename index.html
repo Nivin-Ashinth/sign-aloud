@@ -2,32 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IVR with TTS</title>
-  <link rel="stylesheet" href="./style.css"> 
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css"> 
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 20px;
+    }
+    .video-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    video {
+      width: 100%;
+      max-width: 400px;
+      border: 3px solid #007bff;
+      border-radius: 10px;
+    }
+    .btn-container {
+      margin: 20px 0;
+    }
+    #ivrButtons {
+      display: none;
+      margin-top: 20px;
+    }
+    #ivrButtons button {
+      margin: 5px;
+    }
+  </style>
 </head>
 <body onload="showMyFace()">
-  <video id="yourVideo" autoplay muted playsinline></video>
-  <video id="friendsVideo" autoplay playsinline></video>
-  <br />
-  <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg">
-    <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Call
-  </button>
-  <button onclick="endCall()" type="button" class="btn btn-danger btn-lg">
-    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> End Call
-  </button>
-  
-  <!-- IVR Buttons -->
-  <div id="ivrButtons" style="display:none;">
-    <button onclick="sendIVRMessage('You Are Fired !!!')">You Are Fired !!!</button>
-    <button onclick="sendIVRMessage('Send Me The Files')">Send Me The Files</button>
-    <button onclick="sendIVRMessage('Come To Cabin')">Come To Cabin</button>
-    <button onclick="sendIVRMessage('Hows The project Is Going On?')">Hows The project Is Going On?</button>
-    <button onclick="sendIVRMessage('Good Job')">Good Job</button>
+
+  <div class="container">
+    <h2 class="text-primary">IVR Video Call System</h2>
+
+    <div class="video-container">
+      <video id="yourVideo" autoplay muted playsinline></video>
+      <video id="friendsVideo" autoplay playsinline></video>
+    </div>
+
+    <div class="btn-container">
+      <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg">
+        <span class="glyphicon glyphicon-facetime-video"></span> Call
+      </button>
+      <button onclick="endCall()" type="button" class="btn btn-danger btn-lg">
+        <span class="glyphicon glyphicon-phone-alt"></span> End Call
+      </button>
+    </div>
+
+    <div id="ivrButtons">
+      <h3 class="text-info">IVR Messages</h3>
+      <button class="btn btn-warning" onclick="sendIVRMessage('You Are Fired !!!')">You Are Fired !!!</button>
+      <button class="btn btn-warning" onclick="sendIVRMessage('Send Me The Files')">Send Me The Files</button>
+      <button class="btn btn-warning" onclick="sendIVRMessage('Come To Cabin')">Come To Cabin</button>
+      <button class="btn btn-warning" onclick="sendIVRMessage('Hows The project Is Going On?')">Hows The Project?</button>
+      <button class="btn btn-success" onclick="sendIVRMessage('Good Job')">Good Job</button>
+    </div>
   </div>
-  
+
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script src="./app.js"></script>
+
 </body>
 </html>
-
